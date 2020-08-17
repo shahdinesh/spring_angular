@@ -11,10 +11,10 @@ export class PlaceOrderComponent implements OnInit {
   isLoggedIn = false;
   form: any = {};
   items = [
-      { name: "item1", price: "10", },
-      { name: "item2", price: "20", },
-      { name: "item3", price: "30", },
-      { name: "item4", price: "40", },
+      { name: "Piza", price: "10", },
+      { name: "Burger", price: "20", },
+      { name: "Mo:Mo", price: "30", },
+      { name: "Chowmein", price: "40", },
     ];
 
   constructor(private userService: UserService, private tokenStorage: TokenStorageService) {}
