@@ -1,0 +1,55 @@
+<div class="col-md-12" style="padding: 44px 0px;">
+    <div class="card card-container">
+        <div class="alert alert-success" id="js-alert-success" style="display: none;">
+            <strong>Success!</strong> Your Order has been placed.
+        </div>
+        <div class="alert alert-danger" id="js-alert-danger" style="display: none;">
+            <strong>Failed!</strong> Please try again later.
+        </div>
+        <form id="js-form" *ngIf="isLoggedIn" name="form" #f="ngForm" (ngSubmit)="placeOrderSubmit()" novalidate>
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="item">Item</label>
+                        <select name="item" class="form-control" id="item" [(ngModel)]="form.item" required #item="ngModel">
+                            <option *ngFor="let i of items;" ng-data="{{i.rate}}" value="{{i.name}}" rate="{{ i.rate }}">{{ i.name }}</option>
+                        </select>
+                        <div class="alert alert-danger" role="alert" *ngIf="f.submitted && item.invalid">
+                            Item is required!
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="quantity">Quantity</label>
+                        <input type="text" class="form-control" name="quantity" [(ngModel)]="form.quantity" required #quantity="ngModel" />
+                        <div class="alert alert-danger" role="alert" *ngIf="f.submitted && quantity.invalid">
+                            Quantity is required!
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="rate">Rate</label>
+                        <input type="text" class="form-control" name="rate" [(ngModel)]="form.rate" required #rate="ngModel" />
+                        <div class="alert alert-danger" role="alert" *ngIf="f.submitted && rate.invalid">
+                            Rate is required!
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="total">Total</label>
+                        <input type="text" class="form-control" name="total" [(ngModel)]="form.total" value="{{ (form.quantity)*(form.rate) }}" #total="ngModel" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary btn-block">
+                    Confirm
+                </button>
+            </div>
+        </form>
+    </div>
+
+</div>

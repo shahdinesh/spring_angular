@@ -1,0 +1,11 @@
+spring.datasource.url=jdbc:mysql://localhost:3306/[DBNAME]
+spring.datasource.username=[USERNAME]
+spring.datasource.password=[PASSWORD]
+spring.jpa.database-platform = org.hibernate.dialect.MySQL5Dialect
+spring.jpa.generate-ddl=true
+spring.jpa.hibernate.ddl-auto = update
+
+spring.profiles.active=development
+spring.main.banner-mode=off
+
+jwt.secret=[TOKENSECRET]

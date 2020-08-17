@@ -1,0 +1,43 @@
+<div>
+    <h1>Order List</h1>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Orders</th>
+                <th>Total Amount</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let allOrder of allOrders">
+                <td>{{ allOrder.name }}</td>
+                <td>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <td>Item Name</td>
+                                <td>Quantity</td>
+                                <td>Rate</td>
+                                <td>Total</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let order of allOrder.orderList">
+                                <td>{{ order.itemname }}</td>
+                                <td>{{ order.quantity }}</td>
+                                <td>{{ order.rate }}</td>
+                                <td>{{ order.quantity * order.rate }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td>{{ allOrder.grandTotal }}</td>
+                <td>
+                    <button class="btn btn-primary" *ngIf="!allOrder.hasPaid" (click)="markPaid(allOrder.id)" data-id="paid-btn-{{allOrder.id}}" type="button">Mark Paid</button>
+                    <span class="text-success" *ngIf="allOrder.hasPaid">Paid</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
